@@ -1,19 +1,62 @@
 \chapter{Theory}
 \section{Background information}
-% explain what waves are
+Seismic faults are planar fractures/discontinuities typically caused by significant displacements in solid ground.
 
 % explain what waves exist in seismology
-Two particular types of waves in seismology are known as $p$-waves and $s$-waves. The distinction between the types draws from the direction in which the wave displaces the field relative to the wave's direction of travel. \cite[57]{stein2009introduction}.
+Two particular types of waves caused by seismic faults are $p$-waves and $s$-waves. The distinction between the types draws from the order in which these wave arrive to a given location: $p$-waves are primary waves and $s$-waves are secondary waves.\cite[57]{stein2009introduction}.
 
-An $s$-wave displaces the field in a direction orthogonal to the propagation of the wave. This is also known as a \textit{transverse wave}.
-On the other hand, a $p$-wave displaces the field in the same direction as the propagation of the wave. This is also known as a \textit{longitudinal wave}\cite[57]{stein2009introduction}.
+When talking about seismic waves, it is common to refer the direction of propagation of the wave as the $z$-axis, with the $x$-axis pointing outside the ground and the $y$-axis pointing parallel to the ground.
 
+$S$-waves displace the field in a direction orthogonal to the propagation of the wave. This is also known as a \textit{transverse wave}. As is typical for transverse waves, such as light \cite{stein2009introduction}, $s$-waves have two independent polarizations. Therefore, we refer to the two polarization as $SH$ waves, where displacements happen in the $y-z$ plane and $SV$ planes, where displacements happen in the $x-z$ plane. 
+On the other hand, a $p$-wave displaces the field in the same direction as the propagation of the wave, in other words, on the $z$-axis. This is also known as a \textit{longitudinal wave}\cite[57]{stein2009introduction}.
 
+The focus of this project will be on the longitudinal waves caused by seismic faults: the $p$-waves.
 
 %All waves have a particular direction of travel--the vector along which the wave itself propagates. In addition to this, the wave also has another vector of interest: the direction in which the wave's field is 
 
 
+
 \section{Continuum mechanics}
+% wave propagation/focus on P-waves
+While seismic waves caused by faults are spherical, as is shown in figure \ref{fig:plane}, far from their origin, these waves can be well approximated as planar waves. We recall the 3D scalar wave equation:
+\begin{align}
+    \lap{\phi}(\vb{x}, t) &= \frac{1}{\nu^2}\partials{^2\phi(\vb{x}, t)}{t^2}
+\end{align}
+Here, $\nu$ is a constant typically associated with wave speed, and $\phi$ corresponds to our wavefunction. The family of solutions to the 1D equivalent of the scalar wave equation is:
+\begin{align}
+    \phi(x,t) &= Ae^{i(\omega t\pm kx)}
+\end{align}
+With $\omega$ representing the frequency of the wave, $k$ representing the \textit{wavenumber} and $A$ being a constant of integration. This 1D solution can easily be generalized to a 3D solution:
+\begin{align}
+    \phi(\vb{x}, t) &= A\exp{i(\omega t \pm \vb{k}\cdot\vb{x})}
+\end{align}
+Where $\vb{k}$ and $\vb{x}$ are now vectors representing the same physical values. In our case, we are working with $p$-waves only, which act longitudinally. Therefore, we can clearly define:
+\begin{align*}
+    \vb{k} &= (0,0,k)
+\end{align*}
+This gives us the following solution for the approximation of a $p$-wave as a planar wave:
+\begin{align}
+    \phi(\vb{x}, t) &= A\exp{i(\omega t \pm kz)}
+\end{align}
+From Stein and Wysession,
+the gradient of the displacement of a $P$-wave is given by
+\begin{align}
+    \vb{u}(z,t)=\nabla \phi = (0,0,-i)\ kA\exp{i(\omega t-kz)},
+\end{align}
+noting that this vector exists purely as a $z$-component, meaning that the displacement changes \textit{only} in the direction of the propagation of the wave.
+We take the divergence of this $\vb{u}$ to obtain the expression for the dilatation of the material:
+\begin{align}
+    \nabla\cdot\vb{u}(z,t) = -k^2A\exp{i(\omega t-kz)}
+\end{align}
+Note that this divergence is nonzero, so clearly a volume change occurs. In particular, the material compresses and expands alternately with respect to the $z$ and $t$ coordinates. The curl here is zero always, since $\nabla\cross\del{\nabla\phi}=0$. 
+
+
+% stress
+
+% strain
+
 
 \section{Interface between materials}
-As expected, the Earth is not an isotropic material.
+As expected, the Earth is not an isotropic\todo[color=red]{fact check w definition} material.
+
+In this project, we assume the simplified case of two interfacing homogeneous materials. The familiar Snell's Law can actually be used here to model the propagation of a wave through the boundary between two materials.
